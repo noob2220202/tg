@@ -4,9 +4,10 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 def category_keyboard(action: str = "select") -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.button(text="💗 여성인증", callback_data=f"cat:{action}:female_verify")
     builder.button(text="💬 일반문의", callback_data=f"cat:{action}:general")
-    builder.button(text="📢 광고문의", callback_data=f"cat:{action}:ad")
+    builder.button(text="👟 레플구매", callback_data=f"cat:{action}:repl")
+    builder.button(text="🔑 계정구매", callback_data=f"cat:{action}:account")
+    builder.button(text="📱 텔프구매", callback_data=f"cat:{action}:telf")
     builder.adjust(1)
     return builder.as_markup()
 

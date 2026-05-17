@@ -17,19 +17,22 @@ BUSINESS_DAYS: list[int] = [
 DB_PATH: str = os.getenv("DB_PATH", "cs.db")
 
 CATEGORY_LABELS = {
-    "female_verify": "💗 여성인증",
     "general": "💬 일반문의",
-    "ad": "📢 광고문의",
+    "repl": "👟 레플구매",
+    "account": "🔑 계정구매",
+    "telf": "📱 텔프구매",
 }
 
 CATEGORY_ICONS = {
-    "female_verify": 16749490,
     "general": 7322096,
-    "ad": 16766590,
+    "repl": 13338331,
+    "account": 9367192,
+    "telf": 16766590,
 }
 
 CATEGORY_TOPIC_PREFIX = {
-    "female_verify": "[💗 여성인증]",
     "general": "[💬 일반]",
-    "ad": "[📢 광고]",
+    "repl": "[👟 레플]",
+    "account": "[🔑 계정]",
+    "telf": "[📱 텔프]",
 }
