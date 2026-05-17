@@ -12,6 +12,15 @@ def category_keyboard(action: str = "select") -> InlineKeyboardMarkup:
     return builder.as_markup()
 
 
+def telf_duration_keyboard() -> InlineKeyboardMarkup:
+    builder = InlineKeyboardBuilder()
+    builder.button(text="3개월", callback_data="telf:3")
+    builder.button(text="6개월", callback_data="telf:6")
+    builder.button(text="12개월", callback_data="telf:12")
+    builder.adjust(3)
+    return builder.as_markup()
+
+
 def confirm_close_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="✅ 예, 종료합니다", callback_data="close:confirm")

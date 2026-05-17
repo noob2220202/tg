@@ -60,30 +60,23 @@ async def on_close_confirm(callback: CallbackQuery, bot: Bot) -> None:
         await callback.answer("진행 중인 문의가 없습니다.")
         return
 
-    await db.close_ticket(user_id)
-    from services.topic import close_topic
-    await close_topic(bot, ticket["topic_id"])
-
-    await callback.message.edit_text(texts.TICKET_CLOSED_USER)
-    await callback.answer()
-
-    try:
-        await bot.send_message(
-            chat_id=callback.message.chat.id,
-            text=texts.TICKET_CLOSED_USER,
-        )
-    except Exception:
-        pass
-
+    # 알림 먼저 전송 후 토픽 닫기
     try:
         from config import ADMIN_GROUP_ID
         await bot.send_message(
             chat_id=ADMIN_GROUP_ID,
             message_thread_id=ticket["topic_id"],
-            text=f"✅ 유저가 문의를 직접 종료했습니다.",
+            text="✅ 유저가 문의를 직접 종료했습니다.",
         )
     except Exception:
         pass
+
+    await callback.message.edit_text(texts.TICKET_CLOSED_USER)
+    await callback.answer()
+
+    await db.close_ticket(user_id)
+    from services.topic import close_topic
+    await close_topic(bot, ticket["topic_id"])
 
 
 @router.callback_query(F.data == "close:cancel")

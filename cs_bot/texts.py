@@ -83,3 +83,12 @@ FAQ_TOGGLE_DONE = "✅ FAQ #{faq_id} {'활성화' if enabled else '비활성화'
 FAQ_TOGGLE_NOT_FOUND = "❌ 해당 FAQ가 없습니다."
 
 CATEGORY_CHANGE_PROMPT = "📂 새 카테고리를 선택해 주세요. (새 토픽이 생성됩니다)"
+
+CATEGORY_PROMPT = {
+    "general": "💬 무엇이든 편하게 문의해 주세요.",
+    "repl": "👟 크림(KREAM) 앱에서 원하시는 상품을 찾아 화면 캡처 이미지를 보내주세요.",
+    "account": "🔑 원하시는 <b>국가</b>와 <b>연식(가입 연도)</b>를 알려주세요.\n예) 미국, 2023년",
+    "telf": "📱 원하시는 이용 기간을 선택해 주세요.",
+}
+
+TELF_SELECTED = "📱 <b>{duration}</b> 텔프 이용권을 선택하셨습니다.\n담당자가 곧 연락드립니다."

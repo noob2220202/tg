@@ -32,15 +32,15 @@ async def admin_close(message: Message, bot: Bot) -> None:
         await message.reply("이 토픽에 연결된 유저가 없습니다.")
         return
 
-    await db.close_ticket(user_id)
-    await close_topic(bot, topic_id)
-
+    # 알림 먼저 전송 후 토픽 닫기 (닫힌 토픽에 reply하면 General로 fallback됨)
     try:
         await bot.send_message(user_id, texts.TICKET_CLOSED_USER)
     except Exception:
         await message.reply(texts.CANNOT_SEND_USER)
 
     await message.reply(texts.TICKET_CLOSED_ADMIN)
+    await db.close_ticket(user_id)
+    await close_topic(bot, topic_id)
 
 
 @router.message(Command("ban"), F.chat.id == ADMIN_GROUP_ID)
@@ -55,10 +55,9 @@ async def admin_ban(message: Message, bot: Bot) -> None:
     reason = args[1] if len(args) > 1 else ""
 
     await db.ban_user(user_id, reason)
+    await message.reply(texts.BAN_DONE.format(user_id=user_id), parse_mode="Markdown")
     await db.close_ticket(user_id)
     await close_topic(bot, topic_id)
-
-    await message.reply(texts.BAN_DONE.format(user_id=user_id), parse_mode="Markdown")
 
 
 @router.message(Command("unban"), F.chat.id == ADMIN_GROUP_ID)
