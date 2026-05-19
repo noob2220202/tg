@@ -14,6 +14,8 @@ from services.faq_matcher import match_faq
 
 logger = logging.getLogger(__name__)
 router = Router()
+router.message.filter(F.chat.type == "private")
+router.callback_query.filter(F.message.chat.type == "private")
 
 # media_group 버퍼: {media_group_id: [message_id, ...]}
 _media_group_buffer: dict[str, list[int]] = defaultdict(list)

@@ -9,6 +9,7 @@ from services.topic import create_topic, get_or_create_topic
 
 logger = logging.getLogger(__name__)
 router = Router()
+router.callback_query.filter(F.message.chat.type == "private")
 
 
 async def _send_category_prompt(callback: CallbackQuery, category: str) -> None:
