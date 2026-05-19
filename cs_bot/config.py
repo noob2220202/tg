@@ -18,21 +18,18 @@ DB_PATH: str = os.getenv("DB_PATH", "cs.db")
 
 CATEGORY_LABELS = {
     "general": "💬 일반문의",
-    "repl": "👟 레플구매",
-    "account": "🔑 계정구매",
-    "telf": "📱 텔프구매",
+    "event": "🎁 이벤트수령",
+    "suggest": "📝 건의사항",
 }
 
 CATEGORY_ICONS = {
     "general": 7322096,
-    "repl": 13338331,
-    "account": 9367192,
-    "telf": 16766590,
+    "event": 16749490,
+    "suggest": 16766590,
 }
 
 CATEGORY_TOPIC_PREFIX = {
     "general": "[💬 일반]",
-    "repl": "[👟 레플]",
-    "account": "[🔑 계정]",
-    "telf": "[📱 텔프]",
+    "event": "[🎁 이벤트]",
+    "suggest": "[📝 건의]",
 }

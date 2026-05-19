@@ -5,19 +5,9 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 def category_keyboard(action: str = "select") -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="💬 일반문의", callback_data=f"cat:{action}:general")
-    builder.button(text="👟 레플구매", callback_data=f"cat:{action}:repl")
-    builder.button(text="🔑 계정구매", callback_data=f"cat:{action}:account")
-    builder.button(text="📱 텔프구매", callback_data=f"cat:{action}:telf")
+    builder.button(text="🎁 이벤트수령", callback_data=f"cat:{action}:event")
+    builder.button(text="📝 건의사항", callback_data=f"cat:{action}:suggest")
     builder.adjust(1)
-    return builder.as_markup()
-
-
-def telf_duration_keyboard() -> InlineKeyboardMarkup:
-    builder = InlineKeyboardBuilder()
-    builder.button(text="3개월", callback_data="telf:3")
-    builder.button(text="6개월", callback_data="telf:6")
-    builder.button(text="12개월", callback_data="telf:12")
-    builder.adjust(3)
     return builder.as_markup()
 
 
